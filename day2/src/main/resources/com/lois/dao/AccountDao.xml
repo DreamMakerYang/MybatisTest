@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lois.dao.AccountDao">
+    <resultMap id="accountMap" type="account">
+        <id column="id" property="id"/>
+        <result column="uid" property="uid"/>
+        <result column="money" property="money"/>
+        <!--映射单个对象-->
+        <association property="user" javaType="user">
+            <result column="name" property="name"/>
+            <result column="age" property="age"/>
+        </association>
+    </resultMap>
+
+    <select id="findAll" resultMap="accountMap">
+        select account.*,user.name,user.age from user,account where user.id = account.uid;
+    </select>
+</mapper>

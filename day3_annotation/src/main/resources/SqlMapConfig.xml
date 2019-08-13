@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--加载外部资源-->
+    <properties resource="druid.properties"/>
+
+    <!-- 配置二级缓存 -->
+    <settings>
+        <!-- 开启二级缓存的支持 -->
+        <setting name="cacheEnabled" value="true"/>
+    </settings>
+
+
+    <!--取别名-->
+    <typeAliases>
+        <!--单个设置-->
+        <!--<typeAlias  alias="user" type="com.lois.domain.User"/>-->
+        <!--批量设置，扫描整个包下的类，别名为类名（首字母大写或小写都可以）-->
+        <package name="com.lois.domain"/>
+    </typeAliases>
+    <environments default="mysql">
+        <!--配置mysql环境-->
+        <environment id="mysql">
+            <!--配置事务类型-->
+            <transactionManager type="JDBC"></transactionManager>
+            <!--配置数据源（连接池）-->
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--指定映射文件-->
+    <mappers>
+        <package name="com.lois.dao"/>
+    </mappers>
+
+</configuration>
