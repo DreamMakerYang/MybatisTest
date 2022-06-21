@@ -26,7 +26,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.13</version>
+            <version>8.0.28</version>
         </dependency>
         <!--日志信息（为了能够看到更详细的信息，不加也行那样只会出现结果）-->
         <dependency>
